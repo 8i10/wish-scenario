@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#0d0d12;--surface:#16161f;--surface2:#1e1e2e;
-    --border:#2a2a3d;--accent:#c8a97e;--accent2:#7e9ec8;
-    --text:#e8e4da;--text-muted:#7a7a9a;--r18:#e07070;
+    --bg:#f4f1ec;--surface:#ffffff;--surface2:#f0ece4;
+    --border:#d8d0c4;--accent:#8b6d42;--accent2:#3d6e99;
+    --text:#2a2420;--text-muted:#8a7e72;--r18:#c04040;
   }
   body.light{
     --bg:#f4f1ec;--surface:#ffffff;--surface2:#f0ece4;
@@ -147,7 +147,6 @@
     </div>
     <div class="header-btns">
       <button class="add-btn" onclick="openAddModal()">＋ 追加</button>
-      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button>
     </div>
   </div>
 </header>
@@ -264,7 +263,6 @@ let DATA = [...SCENARIOS_DEFAULT];
 let currentUser = null;
 let editingIdx = null;
 let loginCallback = null;
-let isDark = false;
 
 function getGHToken(){ return localStorage.getItem(GH_TOKEN_KEY)||''; }
 function saveGHToken(t){ localStorage.setItem(GH_TOKEN_KEY,t); }
@@ -276,11 +274,6 @@ function getSavedHash(){ return localStorage.getItem(PASS_KEY)||null; }
 function savePassHash(h){ localStorage.setItem(PASS_KEY,h); }
 function showLoading(on){ document.getElementById('loadingBanner').style.display=on?'flex':'none'; }
 
-function toggleTheme(){
-  isDark=!isDark;
-  document.body.classList.toggle('light',!isDark);
-  document.getElementById('themeBtn').textContent=isDark?'🌙':'☀️';
-}
 
 // ===== GitHub API =====
 async function getFileSha(token){
